@@ -16,15 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TFWApp">
         <activity android:name=".ImageUploadActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImageUploadActivity" />
+        </activity>
+        // Login register activities
+        <activity android:name=".Login_Register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ImageUploadActivity" />
         </activity>
 
         // Provider Used for accessing images from Gallery

@@ -42,8 +42,8 @@ public class Login_Register extends AppCompatActivity {
         //checks if user is already logged in
         FirebaseUser user = fba.getCurrentUser();
         if(user != null){
-           // finish();
-            //here is where the user can go to the next activity
+            //finish();
+            //startActivity(new Intent(Login_Register.this,ImageUploadActivity.class));
         }
         //login button
         button.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +65,7 @@ public class Login_Register extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(Login_Register.this,"Logged In!", Toast.LENGTH_SHORT).show();
-                    //here the user moves on to the next activity
+                    startActivity(new Intent(Login_Register.this,ImageUploadActivity.class));
                 }else{
                     Toast.makeText(Login_Register.this,"Login Failed!", Toast.LENGTH_SHORT).show();
                 }
