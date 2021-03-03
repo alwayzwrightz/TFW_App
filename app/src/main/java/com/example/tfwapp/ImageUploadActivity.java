@@ -38,7 +38,7 @@ public class ImageUploadActivity extends AppCompatActivity {
     String currentPhotoPath;
 
 
-
+ /*Little Comment*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
