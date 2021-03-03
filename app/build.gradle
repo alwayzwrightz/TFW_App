@@ -27,7 +27,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -36,4 +37,17 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    def archLifecycleVersion="1.1.1"
+
+    //firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:26.5.0')
+    //Firebase SDK
+    implementation 'com.google.firebase:firebase-analytics'
+
+    implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$archLifecycleVersion"
+
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-auth'
 }
