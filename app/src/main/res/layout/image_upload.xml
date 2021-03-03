@@ -7,7 +7,7 @@
     tools:context=".ImageUploadActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/displayImageView"
         android:layout_width="332dp"
         android:layout_height="250dp"
         android:src="@drawable/ic_launcher_foreground"
@@ -16,19 +16,20 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.351" />
+        app:layout_constraintVertical_bias="0.253" />
 
     <Button
-        android:id="@+id/uploadCameraImage_button"
-        android:layout_width="142dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="36dp"
+        android:id="@+id/cameraBtn"
+        android:layout_width="122dp"
+        android:layout_height="65dp"
         android:layout_marginTop="28dp"
         android:text="Use Camera"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/displayImageView"
+        app:layout_constraintVertical_bias="0.013" />
 
     <Button
         android:id="@+id/submit_button"
@@ -37,35 +38,34 @@
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.898" />
+        app:layout_constraintTop_toBottomOf="@+id/galleryBtn"
+        app:layout_constraintVertical_bias="0.243" />
 
     <TextView
         android:id="@+id/infor_textview"
         android:layout_width="309dp"
         android:layout_height="64dp"
-        android:layout_marginTop="92dp"
         android:gravity="center_horizontal"
         android:text="Upload an image from your device or take a photo."
-        android:textSize="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/displayImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.285" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="157dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="212dp"
+        android:id="@+id/galleryBtn"
+        android:layout_width="130dp"
+        android:layout_height="68dp"
         android:layout_marginTop="28dp"
         android:text="Open Gallery"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.279"
+        app:layout_constraintStart_toEndOf="@+id/cameraBtn"
+        app:layout_constraintTop_toBottomOf="@+id/displayImageView"
+        app:layout_constraintVertical_bias="0.013" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
