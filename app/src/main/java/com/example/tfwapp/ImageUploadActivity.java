@@ -34,7 +34,7 @@ public class ImageUploadActivity extends AppCompatActivity {
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 105;
     ImageView selectedImage;
-    Button cameraBtn, galleryBtn;
+    Button cameraBtn, galleryBtn, submitBtn;
     String currentPhotoPath;
 
 
@@ -48,6 +48,7 @@ public class ImageUploadActivity extends AppCompatActivity {
         selectedImage = findViewById(R.id.displayImageView);
         cameraBtn = findViewById(R.id.cameraBtn);
         galleryBtn = findViewById(R.id.galleryBtn);
+        submitBtn = findViewById(R.id.submit_button);
 
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +63,13 @@ public class ImageUploadActivity extends AppCompatActivity {
                 Toast.makeText(ImageUploadActivity.this, "Gallery Button is Clicked.", Toast.LENGTH_SHORT).show();
                 Intent gallery = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(gallery, GALLERY_REQUEST_CODE);
+            }
+        });
+
+        //Submit Button
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(ImageUploadActivity.this,music_player.class));
             }
         });
 
