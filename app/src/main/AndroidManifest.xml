@@ -21,6 +21,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ImageUploadActivity" />
         </activity>
+
+        //music_player activity
+        <activity android:name=".music_player">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".music_player" />
+        </activity>
+
         // Login register activities
         <activity android:name=".Login_Register">
             <intent-filter>

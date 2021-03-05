@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "391148301011",
+    "project_id": "tfwapp-72c7c",
+    "storage_bucket": "tfwapp-72c7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391148301011:android:2d29242348299c830d4226",
+        "android_client_info": {
+          "package_name": "com.example.tfwapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391148301011-sqkejeamlfl56tuq70kjvg3qr1h3b796.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9AhecjItVE5Dch-9NkhI9cQHlP-E7S-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391148301011-sqkejeamlfl56tuq70kjvg3qr1h3b796.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
