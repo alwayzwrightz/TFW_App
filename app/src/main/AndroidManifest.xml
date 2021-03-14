@@ -2,9 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tfwapp">
 
-    //Permission to use Camera
     <uses-permission android:name="android.permission.CAMERA"/>
-    //Permissions to read/write to gallery images
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
@@ -22,14 +20,14 @@
                 android:value=".ImageUploadActivity" />
         </activity>
 
-        //music_player activity
+        <!-- music_player activity -->
         <activity android:name=".music_player">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".music_player" />
         </activity>
 
-        // Login register activities
+        <!-- Login Register Activities -->
         <activity android:name=".Login_Register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +42,7 @@
                 android:value=".RegistrationActivity" />
         </activity>
 
-        // Provider Used for accessing images from Gallery
+        <!-- music_player activity -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.android.fileprovider"

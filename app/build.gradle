@@ -48,6 +48,7 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$archLifecycleVersion"
 
+    //Firebase Database
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-auth'
 }
