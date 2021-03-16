@@ -8,28 +8,28 @@
 
     <ImageView
         android:id="@+id/displayImageView"
-        android:layout_width="332dp"
-        android:layout_height="250dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:layout_width="334dp"
+        android:layout_height="356dp"
+        android:src="@drawable/tfw_default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253" />
+        app:layout_constraintVertical_bias="0.258"
+        tools:srcCompat="@drawable/tfw_default" />
 
     <Button
         android:id="@+id/cameraBtn"
         android:layout_width="122dp"
         android:layout_height="65dp"
-        android:layout_marginTop="28dp"
         android:text="Use Camera"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintHorizontal_bias="0.221"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/displayImageView"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintVertical_bias="0.086" />
 
     <Button
         android:id="@+id/submit_button"
@@ -39,8 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/galleryBtn"
-        app:layout_constraintVertical_bias="0.243" />
+        app:layout_constraintTop_toBottomOf="@+id/galleryBtn" />
 
     <TextView
         android:id="@+id/infor_textview"
@@ -48,7 +47,7 @@
         android:layout_height="64dp"
         android:gravity="center_horizontal"
         android:text="Upload an image from your device or take a photo."
-        android:textSize="14sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/displayImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,13 +58,13 @@
         android:id="@+id/galleryBtn"
         android:layout_width="130dp"
         android:layout_height="68dp"
-        android:layout_marginTop="28dp"
         android:text="Open Gallery"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.279"
+        app:layout_constraintHorizontal_bias="0.368"
         app:layout_constraintStart_toEndOf="@+id/cameraBtn"
         app:layout_constraintTop_toBottomOf="@+id/displayImageView"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintVertical_bias="0.087" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
