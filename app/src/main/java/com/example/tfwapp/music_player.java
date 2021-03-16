@@ -1,15 +1,26 @@
 package com.example.tfwapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.renderscript.Sampler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,6 +33,8 @@ public class music_player extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     Handler handler = new Handler();
     Runnable runnable;
+
+    private FirebaseAuth fba;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +49,33 @@ public class music_player extends AppCompatActivity {
         btPlay = findViewById(R.id.bt_play);
         btPause = findViewById(R.id.bt_pause);
         btFf = findViewById(R.id.bt_ff);
+
+        int[] colorArray = {0,0,0};
+        fba = FirebaseAuth.getInstance();
+        FirebaseUser user = fba.getCurrentUser();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference().child("Users");
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot datas : snapshot.getChildren()) {
+                    if(datas.getKey().equals(user.getUid())) {
+                        colorArray[0] = datas.child("red").getValue(Integer.class);
+                        colorArray[1] = datas.child("green").getValue(Integer.class);
+                        colorArray[2] = datas.child("blue").getValue(Integer.class);
+                    }
+                }
+                Toast.makeText(music_player.this,
+                        " R:" + colorArray[0] + " G:" + colorArray[1] + " B:" + colorArray[0],
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         //init media player
         mediaPlayer = MediaPlayer.create(this, R.raw.music);
