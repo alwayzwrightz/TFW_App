@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tfwapp">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,21 +13,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TFWApp">
+        <activity android:name=".New_Song_activity"></activity>
+        <activity android:name=".Song_Gallery" />
         <activity android:name=".ImageUploadActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ImageUploadActivity" />
-        </activity>
-
-        <!-- music_player activity -->
+        </activity> <!-- music_player activity -->
         <activity android:name=".music_player">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".music_player" />
-        </activity>
-
-        <!-- Login Register Activities -->
+        </activity> <!-- Login Register Activities -->
         <activity android:name=".Login_Register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,13 +35,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegistrationActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".RegistrationActivity" />
-        </activity>
-
-        <!-- music_player activity -->
+        </activity> <!-- music_player activity -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.android.fileprovider"
@@ -50,9 +48,8 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
-
     </application>
 
 </manifest>

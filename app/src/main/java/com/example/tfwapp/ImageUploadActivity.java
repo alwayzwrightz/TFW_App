@@ -45,7 +45,6 @@ public class ImageUploadActivity extends AppCompatActivity {
     Button cameraBtn, galleryBtn, submitBtn;
     String currentPhotoPath;
 
-
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
