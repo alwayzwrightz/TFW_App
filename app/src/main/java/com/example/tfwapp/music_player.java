@@ -1,26 +1,40 @@
 package com.example.tfwapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.concurrent.TimeUnit;
 
 public class music_player extends AppCompatActivity {
     //init variables
     TextView playerPosition, playerDuration;
     SeekBar seekBar;
-    ImageView btRew, btPlay, btPause, btFf;
+    ImageView btRew, btPlay, btPause, btFf, image;
     Button b3;
+
+
 
     MediaPlayer mediaPlayer;
     Handler handler = new Handler();
@@ -31,6 +45,7 @@ public class music_player extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
 
+
         //Assign vars test
         playerPosition = findViewById(R.id.player_position);
         playerDuration = findViewById(R.id.player_duration);
@@ -40,6 +55,11 @@ public class music_player extends AppCompatActivity {
         btPause = findViewById(R.id.bt_pause);
         btFf = findViewById(R.id.bt_ff);
         b3 = findViewById(R.id.button3);
+        image = findViewById(R.id.image_music_player);
+        Intent intent = getIntent();
+        Uri current_path = intent.getParcelableExtra("URI_PATH");
+
+        image.setImageURI(current_path);
 
         //init media player
         mediaPlayer = MediaPlayer.create(this, R.raw.music);
@@ -49,6 +69,7 @@ public class music_player extends AppCompatActivity {
             @Override
             public void run() {
                 //set progress on seek bar
+                seekBar.setProgress(mediaPlayer.getCurrentPosition());
                 seekBar.setProgress(mediaPlayer.getCurrentPosition());
                 //handler post delay for 0.5 seconds
                 handler.postDelayed(this, 500);
@@ -131,7 +152,13 @@ public class music_player extends AppCompatActivity {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(music_player.this,Song_Gallery.class));
+                Intent intent = new Intent(music_player.this,Song_Gallery.class);
+                intent.putExtra("URI_PATH",current_path);
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                finish();
+
+                startActivity(intent);
             }
         });
 
@@ -179,5 +206,4 @@ public class music_player extends AppCompatActivity {
                 TimeUnit.MILLISECONDS.toSeconds(duration) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration)));
     }
-
 }
