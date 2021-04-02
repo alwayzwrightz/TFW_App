@@ -75,12 +75,13 @@
             android:layout_height="60dp"
             android:src="@drawable/ic_baseline_fast_forward_24" />
     </LinearLayout>
+
     <Button
         android:id="@+id/button3"
-        android:background="@drawable/button_border"
-        android:textColor="@android:color/white"
         android:layout_width="131dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
         android:baselineAligned="false"
-        android:text="Add to Song Gallery" />
+        android:text="Add to Song Gallery"
+        android:textColor="@android:color/white" />
 </LinearLayout>
