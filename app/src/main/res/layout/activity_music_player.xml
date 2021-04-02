@@ -6,10 +6,12 @@
     android:layout_height="match_parent"
     android:background="@color/design_default_color_primary"
     android:gravity="center"
+    android:grantUriPermissions="true"
     android:orientation="vertical"
     tools:context=".music_player">
 
     <ImageView
+        android:id="@+id/image_music_player"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:src="@drawable/ic_baseline_music_note_24" />
@@ -73,11 +75,12 @@
             android:layout_height="60dp"
             android:src="@drawable/ic_baseline_fast_forward_24" />
     </LinearLayout>
-
     <Button
         android:id="@+id/button3"
+        android:background="@drawable/button_border"
+        android:textColor="@android:color/white"
         android:layout_width="131dp"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
-        android:text="Button" />
+        android:text="Add to Song Gallery" />
 </LinearLayout>

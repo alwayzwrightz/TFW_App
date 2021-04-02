@@ -12,9 +12,12 @@ public class Song {
     @NonNull
     @ColumnInfo(name = "song")
     private String mSong;
+    private String mImage;
 
-    public Song(@NonNull String song) {
-        this.mSong = song;}
+    public Song(@NonNull String song, @NonNull String image) {
+        this.mSong = song;
+        this.mImage = image;}
 
     public String getSong(){return this.mSong;}
+    public String getImage(){return this.mImage;}
 }

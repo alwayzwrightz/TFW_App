@@ -11,7 +11,7 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 
-@Database(entities = {Song.class}, version = 1,  exportSchema = false)
+@Database(entities = {Song.class}, version = 2,  exportSchema = false)
 public abstract class SongRoomDatabase extends RoomDatabase {
 
     public abstract SongDao songDao();
@@ -42,7 +42,7 @@ public abstract class SongRoomDatabase extends RoomDatabase {
             super.onOpen(db);
             // If you want to keep the data through app restarts,
             // comment out the following line.
-            new PopulateDbAsync(INSTANCE).execute();
+            //new PopulateDbAsync(INSTANCE).execute();
         }
     };
 
@@ -58,7 +58,9 @@ public abstract class SongRoomDatabase extends RoomDatabase {
         protected Void doInBackground(final Void... params) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
+
             mDao.deleteAll();
+
             return null;
         }
     }

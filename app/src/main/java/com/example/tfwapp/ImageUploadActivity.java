@@ -10,9 +10,11 @@ import androidx.core.content.FileProvider;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -32,18 +34,32 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class ImageUploadActivity extends AppCompatActivity {
+    public Bitmap bp;
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 105;
+    public String picture_name;
     ImageView selectedImage;
-    Button cameraBtn, galleryBtn, submitBtn;
-    String currentPhotoPath;
+    Button cameraBtn, galleryBtn, submitBtn, signoutBtn, songGallBtn;
+    public Uri uriPhotoPath;
+    public String currentPhotoPath;
+    public File f1;
+
+    OutputStream outputStream;
 
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -103,17 +119,22 @@ public class ImageUploadActivity extends AppCompatActivity {
 */
         return colorArray;
     }
-
+    private static final int PICK_IMAGE = 100;
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.image_upload);
 
         selectedImage = findViewById(R.id.displayImageView);
         cameraBtn = findViewById(R.id.cameraBtn);
         galleryBtn = findViewById(R.id.galleryBtn);
         submitBtn = findViewById(R.id.submit_button);
+        signoutBtn = findViewById(R.id.sign_out);
 
         //Get User instance
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -132,8 +153,10 @@ public class ImageUploadActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ImageUploadActivity.this, "Gallery Button is Clicked.", Toast.LENGTH_SHORT).show();
+
                 Intent gallery = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(gallery, GALLERY_REQUEST_CODE);
+                //openGallery();
             }
         });
 
@@ -163,10 +186,65 @@ public class ImageUploadActivity extends AppCompatActivity {
                 reference.child(user.getUid()).child("blue").setValue(dominantBlue);
 
                 //starts music player activity
-                startActivity(new Intent(ImageUploadActivity.this,music_player.class));
+                Intent intent = new Intent(ImageUploadActivity.this,music_player.class);
+                intent.putExtra("CURRENT_PATH",currentPhotoPath);
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+
+                //creates file path for new file to be created
+                File filepath = getExternalCacheDir();
+                File dir = new File(filepath.getAbsolutePath()+"/TFW_Images/");
+                //checks if directory for file exists, if not creates a new one
+                if(!dir.exists()) {
+                    dir.mkdir();
+                }
+                //file name
+                File file = new File(dir, System.currentTimeMillis()+".jpg");
+                //writing to output stream
+                try{
+                    outputStream = new FileOutputStream(file);
+                } catch (FileNotFoundException e){
+                    e.printStackTrace();
+                }
+                Log.i("tag","got this far");
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                Toast.makeText(getApplicationContext(),"Image Save to Internal !!!"
+                ,Toast.LENGTH_SHORT).show();
+                try {
+                    outputStream.flush();
+                } catch(IOException e){
+                    e.printStackTrace();
+                }
+                try {
+                    outputStream.close();
+                } catch(IOException e){
+                    e.printStackTrace();
+                }
+                //saving Uri from newly created file
+                uriPhotoPath = Uri.fromFile(file);
+
+                intent.putExtra("URI_PATH",uriPhotoPath);
+                startActivity(intent);
             }
         });
-
+        //sign out button
+        signoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                finish();
+            }
+        });
+        songGallBtn = findViewById(R.id.song_gallBtn);
+        //Song Gallery Button
+        songGallBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ImageUploadActivity.this,Song_Gallery.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -190,8 +268,6 @@ public class ImageUploadActivity extends AppCompatActivity {
             }
         }
     }
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -200,6 +276,8 @@ public class ImageUploadActivity extends AppCompatActivity {
                 File f = new File(currentPhotoPath);
                 selectedImage.setImageURI(Uri.fromFile(f));
                 Log.d("tag", "Absolute URL of Image is " + Uri.fromFile(f));
+                //getting picture name
+                picture_name = f.getName();
 
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                 Uri contentUri = Uri.fromFile(f);
@@ -213,10 +291,17 @@ public class ImageUploadActivity extends AppCompatActivity {
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                 String imageFileName = "JPEG_" + timeStamp + "." + getFileExt(contentUri);
                 Log.d("tag", "onActivityResult: Gallery Image Uri:  " + imageFileName);
+                //getting picture name
+
+                String example = contentUri.getPath();
+
+                picture_name = imageFileName;
+
+                uriPhotoPath = contentUri;
                 selectedImage.setImageURI(contentUri);
+
             }
         }
-
     }
 
     private String getFileExt(Uri contentUri) {
@@ -238,7 +323,7 @@ public class ImageUploadActivity extends AppCompatActivity {
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
-
+        //String example = image.toString();
         // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getAbsolutePath();
         return image;
@@ -266,6 +351,15 @@ public class ImageUploadActivity extends AppCompatActivity {
             }
         }
     }
-
+    public static InputStream loadImageCache(Context context, Uri uri){
+        InputStream inputStream = null;
+        try {
+            File file = new File(context.getFilesDir(), uri.getPath());
+            inputStream = new BufferedInputStream(new FileInputStream(file));
+        } catch (IOException e) {
+            //Log.e(TAG, e.getMessage());
+        }
+        return inputStream;
+    }
 
 }

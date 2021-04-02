@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import com.google.firebase.database.core.view.Event;
+
 import java.util.List;
 
 @Dao
@@ -13,6 +15,7 @@ public interface SongDao {
 
     @Query("SELECT * from song_table ORDER BY song ASC")
     LiveData<List<Song>> getAlphabetizedSongs();
+
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Song song);
