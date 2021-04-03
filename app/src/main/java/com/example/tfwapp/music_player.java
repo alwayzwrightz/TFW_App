@@ -129,6 +129,9 @@ public class music_player extends AppCompatActivity {
         else if (r>=192 && g>=192 && b>=192) {
             mediaPlayer = MediaPlayer.create(this, R.raw.white);
         }
+        else{
+            mediaPlayer = MediaPlayer.create(this, R.raw.music);
+        }
 
         //init runnable
         runnable = new Runnable() {

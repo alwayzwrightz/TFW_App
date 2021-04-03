@@ -80,7 +80,6 @@
         android:id="@+id/button3"
         android:layout_width="131dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_border"
         android:baselineAligned="false"
         android:text="Add to Song Gallery"
         android:textColor="@android:color/white" />
