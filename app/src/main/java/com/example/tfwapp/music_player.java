@@ -57,12 +57,78 @@ public class music_player extends AppCompatActivity {
         b3 = findViewById(R.id.button3);
         image = findViewById(R.id.image_music_player);
         Intent intent = getIntent();
+        int r = intent.getIntExtra("RED",0);
+        int g = intent.getIntExtra("GREEN",0);
+        int b = intent.getIntExtra("BLUE",0);
         Uri current_path = intent.getParcelableExtra("URI_PATH");
 
         image.setImageURI(current_path);
 
         //init media player
-        mediaPlayer = MediaPlayer.create(this, R.raw.music);
+        //maroon song
+        if ((64<=r && r<=191) && g<=64 && b<=64) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.maroon);
+        }
+        // red song
+        else if (r>=192 && g<=64 && b<=64) {
+                mediaPlayer = MediaPlayer.create(this, R.raw.red);
+            }
+        // olive song
+        else if ((65<=r && r<=191) && (65<=g && g<=191) && b<=64) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.olive);
+        }
+        // yellow song
+        else if (r>=192 && g>=192 && b<=64) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.yellow);
+        }
+        // green song
+        else if (r<=64 && (65<=g && g<=191) && b<=64) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.green);
+        }
+        // lime song
+        else if (r<=64 && g>=192 && b<=64) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.lime);
+        }
+        // teal song
+        else if (r<=64 && (65<=g && g<=191) && (65<=b && b<=191)) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.teal);
+        }
+        // cyan song
+        else if (r<=64 && g>=192 && b>=192) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.cyan);
+        }
+        // navy song
+        else if (r<=64 && g<=64 && (65<=b && b<=191)) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.navy);
+        }
+        // blue song
+        else if (r<=64 && g<=64 && b>=192) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.blue);
+        }
+        // purple song
+        else if ((65<r && r<=191) && g<=64 && (65<=b && b<=191)) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.purple);
+        }
+        // magenta song
+        else if (r>=192 && g<=64 && b<=192) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.magenta);
+        }
+        // black song
+        else if (r<=64 && g<=64 && b<=64) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.black);
+        }
+        // gray song
+        else if ((65<=r && r<=128) && (65<=g && g<=128) && (65<=b && b<=128)) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.gray);
+        }
+        // silver song
+        else if ((129<=r && r<=191) && (129<=g && g<=191) && (129<=b && b<=191)) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.teal);
+        }
+        // white song
+        else if (r>=192 && g>=192 && b>=192) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.white);
+        }
 
         //init runnable
         runnable = new Runnable() {

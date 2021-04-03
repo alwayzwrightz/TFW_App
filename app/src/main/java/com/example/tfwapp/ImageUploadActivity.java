@@ -64,7 +64,7 @@ public class ImageUploadActivity extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
-    private int dominantRed, dominantGreen, dominantBlue;
+    public int dominantRed, dominantGreen, dominantBlue;
 
     private LinearLayout rootLayout;
 
@@ -177,16 +177,24 @@ public class ImageUploadActivity extends AppCompatActivity {
                 String rString = Integer.toString(dominantRed);
                 String gString = Integer.toString(dominantGreen);
                 String bString = Integer.toString(dominantBlue);
-                Log.i("red ", rString);
-                Log.i("green ", gString);
-                Log.i("blue ", bString);
+                Log.i("RED ", rString);
+                Log.i("GREEN ", gString);
+                Log.i("BLUE ", bString);
 
-                reference.child(user.getUid()).child("red").setValue(dominantRed);
+                //Puts values into Realtime database
+/*              reference.child(user.getUid()).child("red").setValue(dominantRed);
                 reference.child(user.getUid()).child("green").setValue(dominantGreen);
                 reference.child(user.getUid()).child("blue").setValue(dominantBlue);
 
+*/
+
                 //starts music player activity
                 Intent intent = new Intent(ImageUploadActivity.this,music_player.class);
+                //Sends rgb to music player
+                intent.putExtra("RED", dominantRed);
+                intent.putExtra("GREEN", dominantGreen);
+                intent.putExtra("BLUE", dominantBlue);
+
                 intent.putExtra("CURRENT_PATH",currentPhotoPath);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
