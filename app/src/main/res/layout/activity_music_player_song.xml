@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/design_default_color_primary"
+    android:gravity="center"
+    android:grantUriPermissions="true"
+    android:orientation="vertical"
+    tools:context=".music_player">
+
+    <ImageView
+        android:id="@+id/image_music_player_2"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_baseline_music_note_24" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/player_position_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/seek_bar_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/player_duration_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/bt_rew_2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_baseline_fast_rewind_24" />
+
+        <ImageView
+            android:id="@+id/bt_play_2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_baseline_play_arrow_24" />
+
+        <ImageView
+            android:id="@+id/bt_pause_2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_baseline_pause_24"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/bt_ff_2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_baseline_fast_forward_24" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/button32"
+        android:background="@drawable/button_border"
+        android:textColor="@android:color/white"
+        android:layout_width="131dp"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:text="Back to Gallery" />
+</LinearLayout>

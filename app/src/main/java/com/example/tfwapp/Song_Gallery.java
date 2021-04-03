@@ -63,7 +63,7 @@ public class Song_Gallery extends ImageUploadActivity {
         adapter.setOnItemClickListener(new SongListAdapter.ClickListener(){
             @Override
             public void onItemClick(View v, int position){
-                Intent intent = new Intent(Song_Gallery.this, music_player.class);
+                Intent intent = new Intent(Song_Gallery.this, music_player_song.class);
                 Song current = SongListAdapter.mSongs.get(position);
                 String example = current.getImage();
                 Uri ur = Uri.parse(example);
