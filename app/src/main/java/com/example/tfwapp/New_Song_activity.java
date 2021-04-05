@@ -30,20 +30,16 @@ public class New_Song_activity extends ImageUploadActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_song_activity);
-
-        String example_song = "Space Oddity";
-        Random r = new Random();
-        if(r.nextInt(10) >= 5)
-        {
-            example_song = "Sherane aka master splinter's daughter";
-        }
+        Intent intent = getIntent();
+        String songName = intent.getStringExtra("SONGNAME");
+        Log.i("tag",  " song name: "+songName );
         
         Intent replyIntent = new Intent();
 
-        if (example_song == "h") {
+        if (songName == "") {
             setResult(RESULT_CANCELED, replyIntent);
         } else {
-            String song = example_song;
+            String song = songName;
             replyIntent.putExtra(EXTRA_REPLY, song);
             setResult(RESULT_OK, replyIntent);
         }

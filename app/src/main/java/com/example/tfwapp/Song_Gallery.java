@@ -44,6 +44,8 @@ public class Song_Gallery extends ImageUploadActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_song_gallery);
+        Intent intentSong = getIntent();
+        String songName = intentSong.getStringExtra("SONGNAME");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final SongListAdapter adapter = new SongListAdapter(this);
@@ -78,6 +80,7 @@ public class Song_Gallery extends ImageUploadActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Song_Gallery.this, New_Song_activity.class);
+                intent.putExtra("SONGNAME",songName);
                 startActivityForResult(intent, NEW_SONG_ACTIVITY_REQUEST_CODE);
             }
         });

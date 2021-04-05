@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.concurrent.TimeUnit;
 
+
 public class music_player extends AppCompatActivity {
     //init variables
     TextView playerPosition, playerDuration;
@@ -35,10 +36,11 @@ public class music_player extends AppCompatActivity {
     Button b3;
 
 
-
     MediaPlayer mediaPlayer;
     Handler handler = new Handler();
     Runnable runnable;
+
+    public String songName = "test";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,73 +66,91 @@ public class music_player extends AppCompatActivity {
 
         image.setImageURI(current_path);
 
+
         //init media player
         //maroon song
         if ((64<=r && r<=191) && g<=64 && b<=64) {
             mediaPlayer = MediaPlayer.create(this, R.raw.maroon);
+            songName = "MAROON";
         }
         // red song
         else if (r>=192 && g<=64 && b<=64) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.red);
+            songName = "RED";
             }
         // olive song
         else if ((65<=r && r<=191) && (65<=g && g<=191) && b<=64) {
             mediaPlayer = MediaPlayer.create(this, R.raw.olive);
+            songName = "OLIVE";
         }
         // yellow song
         else if (r>=192 && g>=192 && b<=64) {
             mediaPlayer = MediaPlayer.create(this, R.raw.yellow);
+            songName = "YELLOW";
         }
         // green song
         else if (r<=64 && (65<=g && g<=191) && b<=64) {
             mediaPlayer = MediaPlayer.create(this, R.raw.green);
+            songName = "YELLOW";
         }
         // lime song
         else if (r<=64 && g>=192 && b<=64) {
             mediaPlayer = MediaPlayer.create(this, R.raw.lime);
+            songName = "LIME";
         }
         // teal song
         else if (r<=64 && (65<=g && g<=191) && (65<=b && b<=191)) {
             mediaPlayer = MediaPlayer.create(this, R.raw.teal);
+            songName = "TEAL";
         }
         // cyan song
         else if (r<=64 && g>=192 && b>=192) {
             mediaPlayer = MediaPlayer.create(this, R.raw.cyan);
+            songName = "CYAN";
         }
         // navy song
         else if (r<=64 && g<=64 && (65<=b && b<=191)) {
             mediaPlayer = MediaPlayer.create(this, R.raw.navy);
+            songName = "NAVY";
         }
         // blue song
         else if (r<=64 && g<=64 && b>=192) {
             mediaPlayer = MediaPlayer.create(this, R.raw.blue);
+            songName = "YELLOW";
         }
         // purple song
         else if ((65<r && r<=191) && g<=64 && (65<=b && b<=191)) {
             mediaPlayer = MediaPlayer.create(this, R.raw.purple);
+            songName = "PURPLE";
         }
         // magenta song
         else if (r>=192 && g<=64 && b<=192) {
             mediaPlayer = MediaPlayer.create(this, R.raw.magenta);
+            songName = "YELLOW";
         }
         // black song
         else if (r<=64 && g<=64 && b<=64) {
             mediaPlayer = MediaPlayer.create(this, R.raw.black);
+            songName = "BLACK";
         }
         // gray song
         else if ((65<=r && r<=128) && (65<=g && g<=128) && (65<=b && b<=128)) {
             mediaPlayer = MediaPlayer.create(this, R.raw.gray);
+            songName = "GRAY";
         }
         // silver song
         else if ((129<=r && r<=191) && (129<=g && g<=191) && (129<=b && b<=191)) {
             mediaPlayer = MediaPlayer.create(this, R.raw.teal);
+            songName = "TEAL";
         }
         // white song
         else if (r>=192 && g>=192 && b>=192) {
             mediaPlayer = MediaPlayer.create(this, R.raw.white);
+            songName = "WHITE";
         }
         else{
             mediaPlayer = MediaPlayer.create(this, R.raw.music);
+            songName = "MUSIC";
         }
 
         //init runnable
@@ -226,6 +246,7 @@ public class music_player extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 finish();
+                intent.putExtra("SONGNAME",songName);
 
                 startActivity(intent);
             }

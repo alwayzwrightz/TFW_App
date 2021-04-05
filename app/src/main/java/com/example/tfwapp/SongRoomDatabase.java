@@ -42,7 +42,7 @@ public abstract class SongRoomDatabase extends RoomDatabase {
             super.onOpen(db);
             // If you want to keep the data through app restarts,
             // comment out the following line.
-            //new PopulateDbAsync(INSTANCE).execute();
+            new PopulateDbAsync(INSTANCE).execute();
         }
     };
 
