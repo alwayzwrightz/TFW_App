@@ -71,86 +71,86 @@ public class music_player extends AppCompatActivity {
         //maroon song
         if ((64<=r && r<=191) && g<=64 && b<=64) {
             mediaPlayer = MediaPlayer.create(this, R.raw.maroon);
-            songName = "MAROON";
+            songName = "maroon";
         }
         // red song
         else if (r>=192 && g<=64 && b<=64) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.red);
-            songName = "RED";
+            songName = "red";
             }
         // olive song
         else if ((65<=r && r<=191) && (65<=g && g<=191) && b<=64) {
             mediaPlayer = MediaPlayer.create(this, R.raw.olive);
-            songName = "OLIVE";
+            songName = "olive";
         }
         // yellow song
         else if (r>=192 && g>=192 && b<=64) {
             mediaPlayer = MediaPlayer.create(this, R.raw.yellow);
-            songName = "YELLOW";
+            songName = "yellow";
         }
         // green song
         else if (r<=64 && (65<=g && g<=191) && b<=64) {
             mediaPlayer = MediaPlayer.create(this, R.raw.green);
-            songName = "YELLOW";
+            songName = "green";
         }
         // lime song
         else if (r<=64 && g>=192 && b<=64) {
             mediaPlayer = MediaPlayer.create(this, R.raw.lime);
-            songName = "LIME";
+            songName = "lime";
         }
         // teal song
         else if (r<=64 && (65<=g && g<=191) && (65<=b && b<=191)) {
             mediaPlayer = MediaPlayer.create(this, R.raw.teal);
-            songName = "TEAL";
+            songName = "teal";
         }
         // cyan song
         else if (r<=64 && g>=192 && b>=192) {
             mediaPlayer = MediaPlayer.create(this, R.raw.cyan);
-            songName = "CYAN";
+            songName = "cyan";
         }
         // navy song
         else if (r<=64 && g<=64 && (65<=b && b<=191)) {
             mediaPlayer = MediaPlayer.create(this, R.raw.navy);
-            songName = "NAVY";
+            songName = "navy";
         }
         // blue song
         else if (r<=64 && g<=64 && b>=192) {
             mediaPlayer = MediaPlayer.create(this, R.raw.blue);
-            songName = "YELLOW";
+            songName = "blue";
         }
         // purple song
         else if ((65<r && r<=191) && g<=64 && (65<=b && b<=191)) {
             mediaPlayer = MediaPlayer.create(this, R.raw.purple);
-            songName = "PURPLE";
+            songName = "purple";
         }
         // magenta song
         else if (r>=192 && g<=64 && b<=192) {
             mediaPlayer = MediaPlayer.create(this, R.raw.magenta);
-            songName = "YELLOW";
+            songName = "magenta";
         }
         // black song
         else if (r<=64 && g<=64 && b<=64) {
             mediaPlayer = MediaPlayer.create(this, R.raw.black);
-            songName = "BLACK";
+            songName = "black";
         }
         // gray song
         else if ((65<=r && r<=128) && (65<=g && g<=128) && (65<=b && b<=128)) {
             mediaPlayer = MediaPlayer.create(this, R.raw.gray);
-            songName = "GRAY";
+            songName = "gray";
         }
         // silver song
         else if ((129<=r && r<=191) && (129<=g && g<=191) && (129<=b && b<=191)) {
-            mediaPlayer = MediaPlayer.create(this, R.raw.teal);
-            songName = "TEAL";
+            mediaPlayer = MediaPlayer.create(this, R.raw.silver);
+            songName = "silver";
         }
         // white song
         else if (r>=192 && g>=192 && b>=192) {
             mediaPlayer = MediaPlayer.create(this, R.raw.white);
-            songName = "WHITE";
+            songName = "white";
         }
         else{
             mediaPlayer = MediaPlayer.create(this, R.raw.music);
-            songName = "MUSIC";
+            songName = "music";
         }
 
         //init runnable

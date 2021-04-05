@@ -100,23 +100,20 @@ public class ImageUploadActivity extends AppCompatActivity {
         r /= count;
         g /= count;
         b /= count;
+        if(r < 0 ) {
+            r *= -1;
+        }
+        if(g < 0 ) {
+            r *= -1;
+        }
+        if(b < 0 ) {
+            r *= -1;
+        }
+
         colorArray[0] = r;
         colorArray[1] = g;
         colorArray[2] = b;
-/*
-        r = (r << 16) & 0x00FF0000;
-        g = (g << 8) & 0x0000FF00;
-        b = b & 0x000000FF;
-        color = 0xFF000000 | r | g | b;
 
-        String rString = Integer.toString(r);
-        String gString = Integer.toString(g);
-        String bString = Integer.toString(b);
-
-        Log.i("red ", rString);
-        Log.i("green ", gString);
-        Log.i("blue ", bString);
-*/
         return colorArray;
     }
     private static final int PICK_IMAGE = 100;

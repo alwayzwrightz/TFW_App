@@ -81,6 +81,6 @@
         android:layout_width="131dp"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
-        android:text="Add to Song Gallery"
+        android:text="Song Gallery"
         android:textColor="@android:color/white" />
 </LinearLayout>

@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -58,11 +59,79 @@ public class music_player_song extends AppCompatActivity {
         image = findViewById(R.id.image_music_player_2);
         Intent intent = getIntent();
         Uri current_path = intent.getParcelableExtra("URI_PATH");
+        String GallerySongName = intent.getStringExtra("GALLERYSONGNAME");
+        Log.i("tag",  "Gallery Song Name in Music Player song: "+GallerySongName);
 
         image.setImageURI(current_path);
 
         //init media player
-        mediaPlayer = MediaPlayer.create(this, R.raw.music);
+        //maroon song
+        if (GallerySongName.equals("maroon")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.maroon);
+        }
+        // red song
+        else if (GallerySongName.equals("red")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.red);
+        }
+        // olive song
+        else if (GallerySongName.equals("olive")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.olive);
+        }
+        // yellow song
+        else if (GallerySongName.equals("yellow")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.yellow);
+        }
+        // green song
+        else if (GallerySongName.equals("green")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.green);
+        }
+        // lime song
+        else if (GallerySongName.equals("lime")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.lime);
+        }
+        // teal song
+        else if (GallerySongName.equals("teal")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.teal);
+        }
+        // cyan song
+        else if (GallerySongName.equals("cyan")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.cyan);
+        }
+        // navy song
+        else if (GallerySongName.equals("navy")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.navy);
+        }
+        // blue song
+        else if (GallerySongName.equals("blue")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.blue);
+        }
+        // purple song
+        else if (GallerySongName.equals("purple")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.purple);
+        }
+        // magenta song
+        else if (GallerySongName.equals("magenta")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.magenta);
+        }
+        // black song
+        else if (GallerySongName.equals("black")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.black);
+        }
+        // gray song
+        else if (GallerySongName.equals("gray")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.gray);
+        }
+        // silver song
+        else if (GallerySongName.equals("silver")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.silver);
+        }
+        // white song
+        else if (GallerySongName.equals("white")) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.white);
+        }
+        else{
+            mediaPlayer = MediaPlayer.create(this, R.raw.music);
+        }
 
         //init runnable
         runnable = new Runnable() {

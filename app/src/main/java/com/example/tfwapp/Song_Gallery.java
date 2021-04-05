@@ -68,7 +68,10 @@ public class Song_Gallery extends ImageUploadActivity {
                 Intent intent = new Intent(Song_Gallery.this, music_player_song.class);
                 Song current = SongListAdapter.mSongs.get(position);
                 String example = current.getImage();
+                String GallerySongName = current.getSong();
+                Log.i("tag",  "Gallery Song Name: "+GallerySongName);
                 Uri ur = Uri.parse(example);
+                intent.putExtra("GALLERYSONGNAME",GallerySongName);
                 intent.putExtra("URI_PATH",ur);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
